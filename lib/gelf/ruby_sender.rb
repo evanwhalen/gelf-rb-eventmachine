@@ -1,3 +1,5 @@
+require 'eventmachine'
+
 module GELF
   # Plain Ruby UDP sender.
   class RubyUdpSender
@@ -8,7 +10,9 @@ module GELF
 
     def send_datagrams(datagrams)
       datagrams.each do |datagram|
-        @socket.send(datagram, 0, @host, @port)
+        EM.next_tick do
+          @socket.send(datagram, 0, @host, @port)
+        end
       end
     end
   end

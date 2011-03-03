@@ -10,7 +10,10 @@ class TestRubyUdpSender < Test::Unit::TestCase
 
     context "send_datagrams" do
       setup do
-        @sender.send_datagrams(@datagrams)
+        EM.run do
+          @sender.send_datagrams(@datagrams)
+          EM.stop_event_loop
+        end
       end
 
       before_should "be called with 3 times correct parameters" do
