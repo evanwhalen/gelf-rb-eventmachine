@@ -14,6 +14,7 @@ begin
     gem.add_dependency "json"
     gem.add_development_dependency "shoulda"
     gem.add_development_dependency "mocha"
+    gem.add_development_dependency "eventmachine"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
